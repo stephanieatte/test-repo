@@ -1,3 +1,5 @@
+#!/bin/bash
+
 function inline_link {
   LINK=$(printf "url='%s'" "$1")
 
@@ -7,3 +9,5 @@ function inline_link {
 
   printf '\033]1339;%s\a\n' "$LINK"
 }
+
+inline_link
