@@ -1,0 +1,40 @@
+<unit>
+  <test name="Test Addition">
+    <description>
+      This test verifies the addition of two numbers.
+    </description>
+    <input>
+      <a>2</a>
+      <b>3</b>
+    </input>
+    <output>
+      <sum>5</sum>
+    </output>
+  </test>
+  
+  <test name="Test Subtraction">
+    <description>
+      This test verifies the subtraction of two numbers.
+    </description>
+    <input>
+      <a>5</a>
+      <b>2</b>
+    </input>
+    <output>
+      <difference>3</difference>
+    </output>
+  </test>
+  
+  <test name="Test Multiplication">
+    <description>
+      This test verifies the multiplication of two numbers.
+    </description>
+    <input>
+      <a>4</a>
+      <b>6</b>
+    </input>
+    <output>
+      <product>24</product>
+    </output>
+  </test>
+</unit>
