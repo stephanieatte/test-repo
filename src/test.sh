@@ -8,6 +8,8 @@
   uname -a
 )
 
+echo "hi"
+
 if [[ -x "$(command -v node)" ]]; then
   ( set -x; node --version )
 else
