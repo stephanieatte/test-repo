@@ -5,5 +5,4 @@ steps:
       - slack:
           channels:
             - "#stephanie_test"
-            - "#stephanie_test"
-          message: "hello test"
+          message: "Another Retry"
