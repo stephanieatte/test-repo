@@ -2,6 +2,6 @@
 set -x
 echo "hi"
 
- if [ "$BUILDKITE_RETRY_COUNT" -ne 1 ]; then
+ if [ "$BUILDKITE_RETRY_COUNT" -eq 0 ]; then
           echo "Then there is a retrial"
         fi
