@@ -1,2 +1,1 @@
-export GLOBAL_TIMEOUT = 60
-export timeout_in_minutes =23
+buildkite-agent pipeline upload pipeline.yml
