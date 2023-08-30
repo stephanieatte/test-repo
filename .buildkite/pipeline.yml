@@ -1,0 +1,4 @@
+steps:
+  - label: "Only run when retry works"
+    command: |
+      buildkite-agent annotate 'Example `success` style' --style 'success' --context 'ctx-success'
