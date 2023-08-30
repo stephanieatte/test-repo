@@ -1,8 +1,6 @@
 steps:
    - label: "Notify slack about retry count"
      command: echo "Notifying slack about the retry count"
+     steps:
      notify:
-       - slack:
-           channels:
-             - "#stephanie_test"
-            message: "This job has been retried"
+       - slack: "#stephanie_test"
