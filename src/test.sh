@@ -1,13 +1,4 @@
 #!/bin/bash
-
-(
-  set -x
-
-  env | sort
-
-  uname -a
-)
-
+set -x
 echo "hi"
 echo $BUILDKITE_RETRY_COUNT
-//if [ "${pipeline_length} -ne 0 ]
