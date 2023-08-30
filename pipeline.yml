@@ -1,5 +1,9 @@
-notify:
-  - slack:
-      channels:
-        - "#stephanie_test"
-      message: "SRE related information here..."
+steps:
+  - label: "Example Test - pass"
+    command: echo "Hello!"
+    notify:
+      - slack:
+          channels:
+            - "#stephanie_test"
+            - "#stephanie_test"
+          message: "hello test"
