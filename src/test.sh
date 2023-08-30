@@ -1,4 +1,7 @@
 #!/bin/bash
 set -x
 echo "hi"
-echo $BUILDKITE_RETRY_COUNT
+
+ if [ "$BUILDKITE_RETRY_COUNT" -ne 0 ]; then
+          echo "Then there is a retrial"
+        fi
