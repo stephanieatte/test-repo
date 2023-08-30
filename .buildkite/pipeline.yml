@@ -1,8 +1,5 @@
 steps:
   - command: "echo hi"
-
 notify:
-  - slack:
-      channels:
-        - "#stephanie_test"
-      message: "A retry here"
+  - slack: "#stephanie_test"
+      
