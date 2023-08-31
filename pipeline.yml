@@ -5,4 +5,3 @@ steps:
   - label: "Unit Tests"
     key: "unit_tests"
     command: "echo test global timeout"
-    timeout_in_minutes: "$GLOBAL_TIMEOUT"
