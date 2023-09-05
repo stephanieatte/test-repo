@@ -1,0 +1,5 @@
+env:
+ - buddy: "bummmy"
+ 
+steps:
+  - command: "echo hi"
