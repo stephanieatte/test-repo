@@ -1,5 +1,5 @@
 env:
- - buddy: "bummmy"
+ buddy: "bummmy"
  
 steps:
   - command: "echo hi"
