@@ -3,3 +3,6 @@ env:
  
 steps:
   - command: "echo hi"
+  - command: "echo hello"
+    env:
+     milk: "milky"
