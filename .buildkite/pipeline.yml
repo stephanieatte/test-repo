@@ -1,8 +1,8 @@
 env:
- buddy: "bummmy"
+ global-yml: "globalVariableinyml"
  
 steps:
-  - command: "echo hi"
-  - command: "echo hello"
+  - command: "echo Step A pipeline upload"
+  - command: "echo Step B pipeline upload"
     env:
-     milk: "milky"
+     test-env: "test"
