@@ -3,10 +3,16 @@
 (
   set -x
 
-  env | sort
 
-  uname -a
 )
 
-echo "hi"
-buildkite-agent meta-data set "con-group" "deploy"
+#!/bin/bash
+
+DEPLOYMENT_ENV="stage"
+
+buildkite-agent pipeline upload <<YAML
+steps:
+  - label: "start gate"
+    command: echo "---> starting concurrency gate"
+    concurrency_group: "gate/${DEPLOYMENT_ENV}"
+YAML
