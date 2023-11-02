@@ -16,3 +16,5 @@ steps:
     command: echo "---> starting concurrency gate"
     concurrency_group: "gate/${DEPLOYMENT_ENV}"
 YAML
+
+exit -1
