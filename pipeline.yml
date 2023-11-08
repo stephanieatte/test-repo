@@ -9,5 +9,5 @@ steps:
        - "echo output/$${JOB_NAME}_artifacts/"
     env:
      JOB_NAME: "BOO"
-    artifact_paths: "output/$${JOB_NAME}_artifacts/*"
+    artifact_paths: "ofopafoa/*"
     
