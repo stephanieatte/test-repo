@@ -6,6 +6,7 @@ steps:
        - "mkdir BOO_artifacts"
        - "cd BOO_artifacts"
        - "touch log.txt"
+       - "echo output/$${JOB_NAME}_artifacts/"
     env:
      JOB_NAME: "BOO"
     artifact_paths: "output/$${JOB_NAME}_artifacts/*"
