@@ -1,5 +1,7 @@
 steps:
   - label: ":golang: :package:"
+    env:
+     JOB_NAME: "BOO"
     commands: 
        - "mkdir output"
        - "cd output"
@@ -7,5 +9,5 @@ steps:
        - "cd BOO_artifacts"
        - "touch log.txt"
        - "echo output/$${JOB_NAME}_artifacts/"
-    artifact_paths: "output/$${JOB_NAME}_artifacts/"
+    artifact_paths: "output/$$(buildkite-agent env get JOB_NAME)_artifacts/"  
     
