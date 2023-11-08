@@ -1,5 +1,5 @@
  env:
-     JOB_NAME: "BOO"
+  - JOB_NAME: "BOO"
      
 steps:
   - label: ":golang: :package:"
@@ -10,6 +10,5 @@ steps:
        - "cd BOO_artifacts"
        - "touch log.txt"
        - "echo output/$${JOB_NAME}_artifacts/"
-   
     artifact_paths: "output/$${JOB_NAME}_artifacts/"
     
