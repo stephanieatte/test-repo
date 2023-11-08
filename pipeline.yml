@@ -1,6 +1,3 @@
- env:
-  - JOB_NAME: "BOO"
-     
 steps:
   - label: ":golang: :package:"
     commands: 
