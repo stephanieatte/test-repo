@@ -1,13 +1,8 @@
+env:
+ JOB_NAME: "sample-job"
+  
 steps:
-  - label: ":golang: :package:"
-    env:
-     JOB_NAME: "BOO"
-    commands: 
-       - "mkdir output"
-       - "cd output"
-       - "mkdir BOO_artifacts"
-       - "cd BOO_artifacts"
-       - "touch log.txt"
-       - "echo output/$${JOB_NAME}_artifacts/"
-    artifact_paths: "output/$$(buildkite-agent env get JOB_NAME)_artifacts/"  
-    
+  - label: "Generating Unit test pipeline"
+    command: "echo Upload Artifact"
+    artifact_paths: "output/$${JOB_NAME}_artifacts/*"  
+      
