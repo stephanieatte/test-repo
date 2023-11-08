@@ -8,5 +8,5 @@ steps:
        - "touch log.txt"
     env:
      JOB_NAME: "BOO"
-    artifact_paths: "output/$${JOB}_artifacts/*"
+    artifact_paths: "output/$${JOB_NAME}_artifacts/*"
     
