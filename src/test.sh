@@ -7,7 +7,7 @@
 
    # Create a pipeline with your trigger step
    PIPELINE="steps:
-     - trigger: \"deploy-pipeline\"
+     - trigger: \"$RELEASE_NAME\"
        label: \"Trigger deploy\"
        build:
          meta_data:
