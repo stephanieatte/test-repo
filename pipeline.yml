@@ -4,7 +4,7 @@ env:
 steps:
   - label: "Generating Unit test pipeline" 
     agents:
-      queue: "web-ci"
+      - queue: "web-ci"
     command: |
       cat <<- YAML | buildkite-agent pipeline upload 
         steps:
