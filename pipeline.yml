@@ -16,15 +16,4 @@ steps:
       YAML
 
 
- - label: "Generating Unit test pipeline" 
-   agents:
-     - queue: "web-ci"
-    command: |
-      cat <<- YAML | buildkite-agent pipeline upload 
-        steps:
-          - command: echo "--> Start of concurrency gate"
-            concurrency_group: gate-$${JOB_NAME}
-            concurrency: 1
-            key: start-gate
-
-      YAML
+ 
