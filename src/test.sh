@@ -13,3 +13,6 @@
 
    # Upload the new pipeline and add it to the current build
    echo "$PIPELINE" | buildkite-agent pipeline upload
+
+
+DOCKERPW ="heyyaaa"
