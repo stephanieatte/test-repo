@@ -3,8 +3,8 @@ env:
   
 steps:
   - label: "Generating Unit test pipeline" 
-    agents:
-      - queue: "web-ci"
+    env:
+     JOB_NAME: "sample-job"
     command: |
       cat <<- YAML | buildkite-agent pipeline upload 
         steps:
