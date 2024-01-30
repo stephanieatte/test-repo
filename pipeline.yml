@@ -1,19 +1,8 @@
-env:
- JOB_NAME: "sample-job"
-  
 steps:
-  - label: "Generating Unit test pipeline" 
-    env:
-     JOB_NAME: "sample-job"
-    command: |
-      cat <<- YAML | buildkite-agent pipeline upload 
-        steps:
-          - command: echo "--> Start of concurrency gate"
-            concurrency_group: gate-$${JOB_NAME}
-            concurrency: 1
-            key: start-gate
-
-      YAML
-
-
- 
+  - command: yarn install && yarn run test
+      plugins:
+        - shellcheck#v1.1.2:
+            files: scripts/*.sh
+        - docker#v3.3.0:
+            image: node
+            workdir: /app
