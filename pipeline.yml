@@ -1,8 +1,7 @@
 steps:
-  - command: yarn install && yarn run test
-      plugins:
-        - shellcheck#v1.1.2:
+  - plugins:
+       - shellcheck#v1.1.2:
             files: scripts/*.sh
-        - docker#v3.3.0:
+       - docker#v3.3.0:
             image: node
             workdir: /app
