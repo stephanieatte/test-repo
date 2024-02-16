@@ -1,14 +1,7 @@
 #!/bin/bash
 set -euo pipefail
 
-# Export environment variables
-export fruit="apple"
-export flower="rose"
+NAME=$(buildkite-agent meta-data get release-stream)
 
-
-entrypointd:
-  01-install-pre-exit-hook: |
-    #!/bin/bash
-    set -euo pipefail
-    echo "#!/bin/bash\nset -euo pipefail\ndocker images" > /var/buildkite/hooks/pre-exit
-    chmod +x /var/buildkite/hooks/pre-exit
+IFS=', ' read -r -a array <<< "$NAME"
+echo "${array[0]}"
