@@ -10,3 +10,7 @@ echo "Elements of myArray: ${myArray[@]}"
 echo "First element: ${myArray[0]}"
 echo "Second element: ${myArray[1]}"
 echo "Third element: ${myArray[2]}"
+
+
+echo "Generate Random Number"
+shuf -i 0-4 -n 1
