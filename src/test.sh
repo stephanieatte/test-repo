@@ -1,16 +1,16 @@
 #!/bin/bash
 
 # Declare an array named 'myArray'
-myArray=(element1 element2 element3)
+programming_languages=('Bash' 'Python' 'JavaScript' 'Ruby', 'Java')
 
 # Print the entire array
-echo "Elements of myArray: ${myArray[@]}"
+echo "Elements of myArray: ${programming_languages[@]}"
 
-# Access individual elements of the array
-echo "First element: ${myArray[0]}"
-echo "Second element: ${myArray[1]}"
-echo "Third element: ${myArray[2]}"
+# Guess the user's preferred language
+echo "First element: ${programming_languages[shuf -i 0-4 -n 1]}"
+echo "Second element: $programming_languages[1]}"
+echo "Third element: ${programming_languages[2]}"
 
 
-echo "Generate Random Number"
-shuf -i 0-4 -n 1
+
+
