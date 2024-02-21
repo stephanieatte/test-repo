@@ -13,4 +13,7 @@ echo "Third element: ${programming_languages[2]}"
 
 
 
-echo ${programming_languages[$RANDOM % ${#list[@]} ]}
+# Generate a random number between 0 and 4
+random_number=$((RANDOM % 5))
+
+echo "Random number between 0 and 4: $random_number"
