@@ -13,7 +13,7 @@ random_number=$((RANDOM % 5))
 echo "trying to guess your preferred language: ${programming_languages[$random_number]}"
 
 if [[ "${preferred_language}" == "${programming_languages[$random_number]}" ]]; then
-    echo "You got it, it's ${preferred_language}"
+    echo "Yaay, we guessed correct, it's ${preferred_language}"
 else
-    echo "You missed it, it's ${preferred_language}"
+    echo "We guessed ${programming_languages[$random_number] but your preferred language is ${preferred_language}"
 fi
