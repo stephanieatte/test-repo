@@ -4,4 +4,4 @@ env:
 steps:
   - label: "Unit Tests"
     key: "unit_tests"
-    command: "echo test global timeout"
+    command: "echo test global timeouts"
