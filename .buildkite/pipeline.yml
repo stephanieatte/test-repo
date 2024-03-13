@@ -1,6 +1,7 @@
-
+env:
+  foo: "pipeline"
 steps:
   - command: "echo Step A pipeline upload"
   - command: "echo Step B pipeline upload"
     env:
-      global-yml: "test.yml"
+      foo: "step"
