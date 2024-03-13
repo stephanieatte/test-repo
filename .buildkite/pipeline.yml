@@ -5,4 +5,4 @@ steps:
   - command: "echo Step A pipeline upload"
   - command: "echo Step B pipeline upload"
     env:
-     test-env: "test"
+      global-yml: "test.yml"
