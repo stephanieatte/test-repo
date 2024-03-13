@@ -1,7 +1,7 @@
 steps:
   - plugins:
        - shellcheck#v1.1.2:
-            files: scriptsees/*.sh
+            files: scriptseessss/*.sh
        - docker#v3.3.0:
             image: node
             workdir: /app
