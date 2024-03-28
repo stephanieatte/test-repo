@@ -1,1 +1,8 @@
-Content of my Filesssdddgggfff
+agents:
+  queue: "development"
+  
+steps:
+  - key: get-approvals
+    label: 'Get Approvals'
+    command: "echo hi"
+    if: build.env("BUILDKITE_AGENT_META_DATA_QUEUE") == "development,testing"
