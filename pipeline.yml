@@ -1,7 +1,10 @@
 steps:
-  - plugins:
-       - shellcheck#v1.1.2:
-            files: scriptssssssddddsssss/*.sh
-       - docker#v3.3.0:
-            image: node
-            workdir: /app
+  - label: "Pick a flavour"
+    command: "hello"
+    key: "stuff"
+    
+  - label: "Pick a flavour"
+    command: "hello"
+    key: stuff
+    
+    
