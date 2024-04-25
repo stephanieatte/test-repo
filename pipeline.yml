@@ -3,8 +3,5 @@ steps:
     command: "hello"
     key: "stuff"
     
-  - label: "Pick a flavour"
-    command: "hello"
-    key: stuff
-    
+  
     
