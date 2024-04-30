@@ -14,3 +14,12 @@ check_build_status() {
     build_status=$(curl -s -H "Authorization: Bearer ${API_TOKEN}" "${build_url}" | jq -r ".state")
     echo "${build_status}"
 }
+
+build_status=$(check_build_status)
+if [ "${build_status}" == "failed" ]; then
+    echo "Build failed. Retrying after an hour..."
+elif [ "${build_status}" == "passed" ]; then
+    echo "Build succeeded!"
+else
+    echo "Build status: ${build_status}."
+fi
