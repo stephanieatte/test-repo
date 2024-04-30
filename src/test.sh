@@ -8,7 +8,6 @@ API_TOKEN="bkua_63fa9fec9d119f650e8b00a2b5f0c5c20036cc65"
 build_id="9053"
 cooldown_seconds=60  # 1 hour cooldown
 
-wait_with_cooldown
 
 # Function to check the status of the build
 check_build_status() {
@@ -37,6 +36,5 @@ trigger_build() {
 wait_with_cooldown() {
     sleep "${cooldown_seconds}"
 }
-
-# Example usage
+wait_with_cooldown
 build_status=$(check_build_status)
