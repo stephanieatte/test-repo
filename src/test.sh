@@ -22,7 +22,8 @@ check_build_status() {
     elif [ "${build_status}" == "passed" ]; then
         echo "Build succeeded!"
     else
-  
+       echo "Build status: ${build_status}."
+    fi
 }
 
 # Function to trigger the build
@@ -39,6 +40,3 @@ wait_with_cooldown() {
 
 # Example usage
 build_status=$(check_build_status)
-
-    echo "Build status: ${build_status}."
-fi
