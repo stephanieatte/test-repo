@@ -28,8 +28,7 @@ check_build_status() {
 # Function to trigger the build
 trigger_build() {
     build_url="https://api.buildkite.com/v2/organizations/$ORG_NAME/pipelines/$PIPELINE_NAME/builds/rebuild"
-    curl -s  -H "Authorization: Bearer $API_TOKEN"\
-     -X PUT "${build_url}"
+    curl -s  -H "Authorization: Bearer $API_TOKEN" -X PUT "${build_url}"
 }
 
 # Wait function with a cooldown
