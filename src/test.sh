@@ -15,25 +15,6 @@ check_build_status() {
     echo "${build_status}"
 }
 
-# Function to trigger the build
-trigger_build() {
-    build_url="https://api.buildkite.com/v2/organizations/${ORG_NAME}/pipelines/${PIPELINE_NAME}/builds"
-    curl -s -X PUT -H "Authorization: Bearer ${API_TOKEN}" -H "Content-Type: application/json" -d '{"commit": "HEAD"}' "${build_url}/rebuild"
-}
 
-# Wait function with a cooldown
-wait_with_cooldown() {
-    sleep "${cooldown_seconds}"
-}
-
-# Example usage
 build_status=$(check_build_status)
-if [ "${build_status}" == "failed" ]; then
-    echo "Build failed. Retrying after an hour..."
-    wait_with_cooldown
-    trigger_build
-elif [ "${build_status}" == "passed" ]; then
-    echo "Build succeeded!"
-else
-    echo "Build status: ${build_status}."
-fi
+echo $build_status
