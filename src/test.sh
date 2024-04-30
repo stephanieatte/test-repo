@@ -13,6 +13,7 @@ check_build_status() {
     build_url="https://api.buildkite.com/v2/organizations/$ORG_NAME/pipelines/$PIPELINE_NAME/builds/$build_id"
     build_status=$(curl -H "Authorization: Bearer $API_TOKEN" "$build_url")
    # echo "The state is $build_status"
+   echo $build_status | jq '.. | .state'
 }
 
 build_status=$(check_build_status)
