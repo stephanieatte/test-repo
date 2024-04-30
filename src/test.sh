@@ -11,9 +11,10 @@ cooldown_seconds=3600  # 1 hour cooldown
 # Function to check the status of the build
 check_build_status() {
     build_url="https://api.buildkite.com/v2/organizations/$ORG_NAME/pipelines/$PIPELINE_NAME/builds/$build_id"
-    build_status=$(curl -s -H "Authorization: Bearer ${API_TOKEN}" -o "build.json" "${build_url}")
+    build_status=$(curl -s -H "Authorization: Bearer ${API_TOKEN}" "${build_url}" | jq -r '.state')
     slugs=$(jq -r '.branch' build.json)
     echo "The slug is $slugs"
+    echo "The state is $build_status"
 }
 
 build_status=$(check_build_status)
