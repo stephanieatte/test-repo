@@ -15,15 +15,6 @@ check_build_status() {
     build_url="https://api.buildkite.com/v2/organizations/$ORG_NAME/pipelines/$PIPELINE_NAME/builds/$build_id"
     build_status=$(curl -s -H "Authorization: Bearer $API_TOKEN" "$build_url" | jq -r ".state")
     echo "The Build state is: $build_status"
-    
-    if [ "$build_status" == "failed" ]; then
-        echo "Build failed. Retrying after an hour..."
-        trigger_build
-    elif [ "$build_status" == "passed" ]; then
-        echo "Build succeeded!"
-    else
-        echo "Build status: $build_status"
-    fi
 }
 
 # Function to trigger the build
@@ -34,7 +25,7 @@ trigger_build() {
 
 # Wait function with a cooldown
 wait_with_cooldown() {
-    sleep "${cooldown_seconds}"
+    sleep "$cooldown_seconds"
 }
 
 
