@@ -13,7 +13,8 @@ cooldown_seconds=10  # 1 hour cooldown
 check_build_status() {
     build_url="https://api.buildkite.com/v2/organizations/$ORG_NAME/pipelines/$PIPELINE_NAME/builds/$build_id"
     build_status=$(curl -s -H "Authorization: Bearer $API_TOKEN" -X GET "$build_url")
-    echo $build_status
+    state=$(echo "$build_status" | jq -r '.state')
+    echo $state
 
 }
 
