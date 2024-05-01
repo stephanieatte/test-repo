@@ -11,9 +11,10 @@ build_id="9053"
 # Function to check the status of the build
 check_build_status() {
     build_url="https://api.buildkite.com/v2/organizations/$ORG_NAME/pipelines/$PIPELINE_NAME/builds/$build_id"
-    build_status=$(curl  -H "Authorization: Bearer $API_TOKEN" \
-    -X GET "$build_url")
-    echo "$build_status"
+    status=$(curl -H "Authorization: Bearer $API_TOKEN" -X GET "$build_url")
+    echo "$status"
+    state=$(echo "$status" | jq -r '.state')
+    echo "The Build state is $state"
 }
 
 # Example usage
