@@ -13,7 +13,7 @@ cooldown_seconds=10  # 1 hour cooldown
 check_build_status() {
     wait_with_cooldown
     build_url="https://api.buildkite.com/v2/organizations/$ORG_NAME/pipelines/$PIPELINE_NAME/builds/$build_id"
-    build_status=$(curl -s -H "Authorization: Bearer $API_TOKEN" "$build_url" | jq -r ".state")
+    build_status=$(curl -s -H "Authorization: Bearer $API_TOKEN" "$build_url" | jq -r '.state')
     echo "$build_status"
         
 }
@@ -21,7 +21,7 @@ check_build_status() {
 # Function to trigger the build
 trigger_build() {
     build_url="https://api.buildkite.com/v2/organizations/$ORG_NAME/pipelines/$PIPELINE_NAME/builds/$build_id/rebuild"
-    curl -s -X POST -H "Authorization: Bearer $API_TOKEN" -H "Content-Type: application/json" -d '{"commit": "HEAD"}' "$build_url"
+    curl -s -H "Authorization: Bearer $API_TOKEN" -X PUT "$build_url"
 }
 
 # Wait function with a cooldown
