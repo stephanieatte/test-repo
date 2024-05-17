@@ -1,6 +1,6 @@
 steps:
   - label: "Pick a flavour"
-    command: "hello"
+    command: "echo hello"
     key: "stuff"
     
   
