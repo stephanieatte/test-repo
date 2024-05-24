@@ -1,16 +1,11 @@
 #!/bin/bash
 
-# Declare an array named 'programming_languages'
-programming_languages=('Bash' 'Python' 'JavaScript' 'Ruby', 'Java')
+# Define variables
+ORG_NAME="atte-test-org-1"
+PIPELINE_NAME="first"
+API_TOKEN="bkua_63fa9fec9d119f650e8b00a2b5f0c5c20036cc65"
 
-# Guess the user's preferred language
-random_number=$((RANDOM % 5))
-echo "We guess your preferred language is: ${programming_languages[$random_number]}"
+build_id="9053"
+#cooldown_seconds=610133 # 1 hour cooldown
 
-# Display the results
-if [[ "${preferred_language}" == "${programming_languages[$random_number]}" ]]; then
-    echo "Yaay, we guessed correct, it's ${preferred_language}"
-else
-    echo "We guessed wrong, it's ${preferred_language}"
-fi
-
+build_status=$(curl -s -H "Authorization: Bearer $API_TOKEN" -X GET "https://api.buildkite.com/v2/organizations/$ORG_NAME/pipelines/$PIPELINE_NAME/builds/$build_id" | jq -r '.state')
