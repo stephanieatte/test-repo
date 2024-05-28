@@ -1,9 +1,2 @@
-mad oh 
-yes great
-hello
-test-production
-avavva
-fklvslsldv
-yeah
-create a pr
+I use this repository for tests as a buildkite-staff
 
