@@ -11,7 +11,7 @@ jobs:
       - name: Trigger a Buildkite Build
         uses: "buildkite/trigger-pipeline-action@v2.1.0"
         with:
-          buildkite_api_access_token: ${{ secrets.TRIGGER_BK_BUILD_TOKEN }} 
+          buildkite_api_access_token: ${{ secrets.BK_SECRET }} 
           pipeline: "atte-test-org-1/first"
           branch: "main"
           commit: "HEAD"
