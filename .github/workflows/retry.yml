@@ -9,8 +9,13 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - name: Extract Build Information
+     - name: Fetch PR Details
+        id: pr_details
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          COMMENT_BODY="${{ github.event.comment.body }}"
-          echo "COMMENT_BODY"
-       
+          PR_API_URL="${{ github.event.issue.pull_request.url }}"
+          PR_DETAILS=$(curl -H "Authorization: Bearer $GITHUB_TOKEN" -H "Accept: application/vnd.github.v3+json" $PR_API_URL)
+          echo $PR_DETAILS
+          echo "::set-output name=branch::$(echo $PR_DETAILS | jq -r .head.ref)"
+          echo "::set-output name=sha::$(echo $PR_DETAILS | jq -r .head.sha)"
