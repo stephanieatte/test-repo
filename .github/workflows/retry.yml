@@ -11,6 +11,9 @@ jobs:
       - name: Retry Build with /bk retry
         if: contains(github.event.comment.body, '/bk retry') #
         uses: "buildkite/trigger-pipeline-action@v2.1.0"
+        run: |
+          COMMENT_BODY="${{ github.event.comment.body }}"
+          echo "COMMENT_BODY"
         with:
           buildkite_api_access_token: ${{ secrets.BK_SECRET }} 
           pipeline: "atte-test-org-1/first"
