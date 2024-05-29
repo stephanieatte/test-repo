@@ -10,8 +10,8 @@ jobs:
     steps:
       - name: Retry Build with /bk retry
         if: contains(github.event.comment.body, '/bk retry') #
+        uses: actions/checkout@v4
         run: |
           COMMENT_BODY="${{ github.event.comment.body }}"
-         # PIPELINE_FILE="${COMMENT_BODY:4}" # Extracts everything after '/bk '
-          echo "Triggering Buildkite pipeline with file: $COMMENT_BODY"
+          echo "COMMENT_BODY"
        
