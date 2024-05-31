@@ -8,7 +8,7 @@ steps:
 
   - label: "Pick a flavour"
     command: "echo hello"
-    key: "stuffffff"
+    key: "stuffffsff"
     
   
     
