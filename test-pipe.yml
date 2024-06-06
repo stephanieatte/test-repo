@@ -1,0 +1,15 @@
+common_params:
+   env:
+     - &mac_agent
+       xcode_version: ${MAC_AGENT_XCODE_VERSION:-15.1} 
+       queue: ${MAC_AGENT_QUEUE:-ios-m2pro}
+
+ steps:
+   - label: build/app/simulator
+     command: echo "hi"
+     agents: *mac_agent
+
+   - label: build/app/device
+     command: echo "hi"
+     branches: main
+     agents: *mac_agent
