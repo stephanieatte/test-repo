@@ -1,8 +1,13 @@
 steps:
-  - label: "Pick a flavour"
-    command: "echo hello"
-    key: "stuffffffdff"
-    
-  
-    
-
+  - label: "Check changed files"
+    plugins:
+      - monorepo-diff#v1.0.1:
+          watch:           
+            - path: "src/"
+              config:
+                trigger: "app-deploy"
+                label: "Triggered deploy"
+                build:
+                  message: this commit $$$ should cause issues
+                  env:
+                    - AWS_REGION=us-west-2
