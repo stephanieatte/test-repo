@@ -1,3 +1,11 @@
-steps:
-  - label: "Check changed files"
-    command: "echo hi"
+plugins:
+      - monorepo-diff#v1.0.1:
+          watch:           
+            - path: "src/"
+              config:
+                trigger: "app-deploy"
+                label: "Triggered deploy"
+                build:
+                  message: this commit $$$ should cause issues
+                  env:
+                    - AWS_REGION=us-west-2
