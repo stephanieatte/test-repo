@@ -8,6 +8,6 @@ steps:
                 trigger: "app-deploy"
                 label: "Triggered deploy"
                 build:
-                  message: this commit $$$ should cause issues
+                  message: this commit should cause issues
                   env:
                     - AWS_REGION=us-west-2
