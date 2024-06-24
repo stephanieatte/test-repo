@@ -2,14 +2,13 @@ env:
   GLOBAL_TIMEOUT: 60
 
 steps:
+
   - label: "Unit Tests"
     key: "unit_tests"
     command: "echo test global timeoutsddsss"
 
-  - label: "Pick a flavour"
-    command: "echo hello"
-    key: "stuffffsff"
-    
-  
-    
+  - trigger: "app-deploy"
+    build:
+      message: this commit should cAA$$A$ ause issues
+                 
 
