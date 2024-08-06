@@ -1,0 +1,15 @@
+[{
+  "id": "4321d72f-9d08-4d38-8cc9-bf0f732d1234",
+  "scope": "TestSuite::SecurityScan",
+  "name": "Test Name",
+  "identifier": "Identifier",
+  "location": "/app/x.ts:1",
+  "file_name": "/app/x.ts",
+  "result": "skipped", 
+  "failure_reason": "Expected: X. Found: Y",
+  "history": {
+  "start_at": 347611.724809, 
+  "end_at": 347612.451041,
+  "duration": 0.726232000044547
+  }
+}]
