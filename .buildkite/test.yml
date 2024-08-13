@@ -1,6 +1,6 @@
 steps:
 - block: Unblock?
-  if: build.creator.teams includes "everyone"
+  if: build.creator.teams includes "things"
   
 - label: Checking permission
   command: "if [[ \"$BUILDKITE_UNBLOCKER_TEAMS\" == *\"Production Approval\"* ]];
