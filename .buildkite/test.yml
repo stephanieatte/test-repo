@@ -6,5 +6,7 @@ steps:
 - label: Checking permission
   command: "if [[ \"$BUILDKITE_UNBLOCKER_TEAMS\" == *\"Production Approval\"* ]];
     then\n  make install\nelse \n  exit 0\nYAML\nfi\n"
-  if: build.creator.teams includes "everyone"
+  if: build.env("BUILDKITE_UNBLOCKER_TEAMS") == "everyone"
   depends_on: "block-step"
+
+
