@@ -1,12 +1,18 @@
 steps:
-- block: Unblock?
-  if: build.creator.teams includes "everyone"
-  key: "block-step"
+  - label: "Generating Block Step"
+    if: build.creator.teams includes "everyone"
+    command: |
+      cat <<- YAML | buildkite-agent pipeline upload 
+        steps:
+          - block: Unblock?
+            key: "block-step"
   
-- label: Checking permission
-  command: "if [[ \"$BUILDKITE_UNBLOCKER_TEAMS\" == *\"Production Approval\"* ]];
-    then\n  make install\nelse \n  exit 0\nYAML\nfi\n"
-  if: build.env("BUILDKITE_UNBLOCKER_TEAMS") == "everyone"
-  depends_on: "block-step"
+          - label: Checking permission
+            command: "if [[ \"$BUILDKITE_UNBLOCKER_TEAMS\" == *\"everyone\"* ]];
+              then\n  make install\nelse \n  exit 0\nYAML\nfi\n"
+            depends_on: "block-step"
+
+
+      YAML
 
 
