@@ -1,7 +1,10 @@
 steps:
 - block: Unblock?
   if: build.creator.teams includes "things"
+  key: "block-step"
   
 - label: Checking permission
   command: "if [[ \"$BUILDKITE_UNBLOCKER_TEAMS\" == *\"Production Approval\"* ]];
     then\n  make install\nelse \n  exit 0\nYAML\nfi\n"
+  if: build.creator.teams includes "things"
+  depends_on: "block-step"
