@@ -15,4 +15,4 @@ steps:
   plugins:
   - github.com/buildkite-plugins/monorepo-diff-buildkite-plugin#v1.0.1:
       watch:
-      - path: kintent-sharedinfra/ecr/preview-environment-docker/
+      - path: src/
