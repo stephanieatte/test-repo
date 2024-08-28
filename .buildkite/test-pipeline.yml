@@ -16,3 +16,5 @@ steps:
   - github.com/buildkite-plugins/monorepo-diff-buildkite-plugin#v1.0.1:
       watch:
       - path: src/
+        config:
+                command: "echo Make Changes to Bin"
