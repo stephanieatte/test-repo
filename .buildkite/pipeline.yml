@@ -1,7 +1,7 @@
 
 
 steps:
-  - command: "echo Step A pipeline uploads"
+  - command: "echo Step A pipeline uploadssss"
   - command: "echo Step B pipeline uploadsssss"
     env:
       foo: "step"
