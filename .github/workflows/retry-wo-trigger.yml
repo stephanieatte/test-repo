@@ -1,0 +1,17 @@
+on:
+  issue_comment:
+    types: [ created, edited ]
+jobs:
+  is_pr_comment:
+    name: Check for Pull Request comment slash commands
+    if: ${{ github.event.issue.pull_request }} # makes sure we're looking at a pull request comment
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Retry Build with /bk retry
+        if: contains(github.event.comment.body, '/bk retry') #
+        uses: actions/checkout@v4
+        run: |
+          COMMENT_BODY="${{ github.event.comment.body }}"
+          echo "COMMENT_BODY"
+       

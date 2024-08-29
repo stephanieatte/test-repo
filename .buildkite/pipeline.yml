@@ -1,8 +1,7 @@
-env:
- global-yml: "globalVariableinyml"
- 
+
+
 steps:
-  - command: "echo Step A pipeline upload"
-  - command: "echo Step B pipeline upload"
+  - command: "echo Step A pipeline uploadsssssssss"
+  - command: "echo Step B pipeline uploadssssss"
     env:
-     test-env: "test"
+      foo: "step"
