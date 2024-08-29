@@ -1,5 +1,5 @@
 steps:
-  - label: "Generating Block Steps"
+  - label: "Generating Block Stepss"
     if: build.creator.teams includes "everyone"
     command: |
       cat <<- YAML | buildkite-agent pipeline upload 
