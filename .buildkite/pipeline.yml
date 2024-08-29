@@ -2,6 +2,6 @@
 
 steps:
   - command: "echo Step A pipeline uploadss"
-  - command: "echo Step B pipeline uploadsssss"
+  - command: "echo Step B pipeline uploadssssSs"
     env:
       foo: "step"
