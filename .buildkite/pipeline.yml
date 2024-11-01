@@ -1,5 +1,5 @@
 steps:
-  - label: ":hammer: Testsss"
+  - label: ":hammer: TestsssS"
     command: |
      curl -X POST \
         -H "Authorization: Token token=$BUILDKITE_ANALYTICS_TOKEN" \
