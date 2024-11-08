@@ -1,6 +1,5 @@
 steps:
   - label: "Generating Block Step"
-    if: build.creator.teams includes "Production Approval"
     command: |
       cat <<- YAML | buildkite-agent pipeline upload 
         steps:
