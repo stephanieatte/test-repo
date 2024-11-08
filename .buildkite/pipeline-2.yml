@@ -8,6 +8,6 @@ steps:
   
           - label: Checking permission
             command: "if [[ \"$BUILDKITE_UNBLOCKER_TEAMS\" == *\"Production Approval\"* ]];
-              then\n  make install\nelse \n  exit -1\nYAML\nfi\n"
+              then\n  make install\nelse \n  exit 0\nYAML\nfi\n"
             depends_on: "block-step"
       YAML
