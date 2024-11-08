@@ -13,6 +13,6 @@ steps:
             depends_on: "block-step"
       YAML
       
-  - command: "echo next step"
-    depends_on: "approval-step"
+ - command: "echo next step"
+   depends_on: "approval-step"
   
