@@ -7,7 +7,7 @@ steps:
             key: "block-step"
   
           - label: Checking permission
-             key: "approval-step"
+            key: "approval-step"
             command: "if [[ \"$BUILDKITE_UNBLOCKER_TEAMS\" == *\"Production Approval\"* ]];
               then\n  make install\nelse \n  exit 0\nYAML\nfi\n"
             depends_on: "block-step"
