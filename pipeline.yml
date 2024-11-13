@@ -2,10 +2,9 @@ env:
   GLOBAL_TIMEOUT: 60
 
 steps:
-
-  - label: "Unit Testtssssss"
+  - label: "Unit Testsss"
     key: "unit_tests"
-    command: "echo test global timeoutsddssss"
+    command: "echo test global timeoutsddssssss"
 
   - trigger: "app-deploy"
     build:

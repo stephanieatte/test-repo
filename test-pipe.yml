@@ -6,7 +6,7 @@
 
  steps:
    - label: build/app/simulator
-     command: echo "hi"
+     command: echo "hii"
      agents: *mac_agent
 
    - label: build/app/device
