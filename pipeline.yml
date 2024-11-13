@@ -2,7 +2,6 @@ env:
   GLOBAL_TIMEOUT: 60
 
 steps:
-
   - label: "Unit Testsss"
     key: "unit_tests"
     command: "echo test global timeoutsddssssss"
