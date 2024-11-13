@@ -5,7 +5,7 @@ steps:
 
   - label: "Unit Testsss"
     key: "unit_tests"
-    command: "echo test global timeoutsddssss"
+    command: "echo test global timeoutsddssssss"
 
   - trigger: "app-deploy"
     build:
