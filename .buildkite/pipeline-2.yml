@@ -1,5 +1,5 @@
 steps:
-  - label: "Generating Block Step"
+  - label: "Generating Block Stepp"
     command: |
       cat <<- YAML | buildkite-agent pipeline upload 
         steps:
