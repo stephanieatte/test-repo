@@ -2,6 +2,12 @@ env:
   GLOBAL_TIMEOUT: 60
 
 steps:
+  - input: "Parameters"
+    fields:
+      - text: "APP_VERSION"
+        hint: "Provide App Version if different from default"
+        required: false
+        key: app-version
   - label: "Unit Testsss"
     key: "unit_tests"
     command: "echo test global timeoutsddssssss"
@@ -9,5 +15,7 @@ steps:
   - trigger: "app-deploy"
     build:
       message: this commit should cAA$$A$ ause issues
+
+      
                  
 
