@@ -5,7 +5,7 @@ steps:
   - input: "Parameters"
     fields:
       - text: "APP_VERSION"
-        hint: "Provide App Version if different from defaultt"
+        hint: "Provide App Version if different from defaultts"
         required: false
         key: app-version
   - label: "Unit Testsss"
