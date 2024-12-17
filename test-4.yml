@@ -1,0 +1,9 @@
+steps:
+  - label: "Pre Execute"
+    key: "pre-execute"
+    command: "echo hi"
+  - label: "Pre Execute"
+    key: "pre-execute"
+    command: "echo hi"
+notify:
+  - slack: "@stephanie"
