@@ -2,7 +2,7 @@ env:
   GLOBAL_TIMEOUT: 60
 
 steps:
-  - input: "Parameterss"
+  - input: "Parametersss"
     fields:
       - text: "APP_VERSION"
         hint: "Provide App Version if different from defaulttsss"
