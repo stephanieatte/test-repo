@@ -1,2 +1,2 @@
 steps:
- - command: "echo test from app folder"
+ - command: "echo test from apps folder"
