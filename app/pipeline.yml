@@ -1,2 +1,2 @@
 steps:
- - command: "echo hello world"
+ - command: "echo hello worlds"
