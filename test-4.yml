@@ -10,7 +10,7 @@ steps:
         -H "Authorization: Bearer bkua_63fa9fec9d119f650e8b00a2b5f0c5c20036cc65" \
         -H "Content-Type: application/json" \
         -d '{
-          "query": "query FindWebhookPayload { build(uuid: \"$$BUILDKITE_BUILD_ID"\) { source { ...on BuildSourceWebhook { headers payload } } } }",
+          "query": "query FindWebhookPayload { build(uuid: \"$BUILDKITE_BUILD_ID"\) { source { ...on BuildSourceWebhook { headers payload } } } }",
           "variables": "{}"
         }'
 notify:
