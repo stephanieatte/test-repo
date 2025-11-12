@@ -8,7 +8,7 @@ steps:
         hint: "Provide App Version if different from default"
         required: false
         key: app-version
-  - label: "Unit Testsss"
+  - label: "Unit Testsssss"
     key: "unit_tests"
     command: "echo test global timeoutsddssssss"
 
