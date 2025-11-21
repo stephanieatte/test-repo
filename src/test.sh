@@ -1,12 +1,17 @@
 #!/bin/bash
 set -e
 
-declare -A metadata=(
-  ["key1"]="value1"
-  ["key2"]="value2"
-  ["key3"]="value3"
+# Define your metadata as key=value pairs in an array
+metadata=(
+  "KEY1=value1"
+  "KEY2=value2"
+  "KEY3=value3"
 )
 
-for key in "${!metadata[@]}"; do
-  buildkite-agent meta-data set "$key" "${metadata[$key]}"
+# Loop through and set each one
+for kv in "${metadata[@]}"; do
+  key="${kv%%=*}"       # extract key
+  value="${kv#*=}"      # extract value
+  echo "Setting metadata: $key=$value"
+  buildkite-agent meta-data set "$key" "$value"
 done
