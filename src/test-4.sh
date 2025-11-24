@@ -10,7 +10,9 @@ MAX_RETRIES=5
 RETRY_DELAY=60
 ATTEMPT=0
 
+# Wait for test to be Uploaded
 echo "⏳ Waiting for test results to be uploaded..."
+sleep 30
 
 # Retry loop
 while [ $ATTEMPT -lt $MAX_RETRIES ]; do
@@ -76,22 +78,24 @@ buildkite-agent annotate --context "test-summary" --style "info" << EOF
 ## 🧪 Test Results Summary
 
 **[Build #$BUILDKITE_BUILD_NUMBER]($BUILDKITE_BUILD_URL)**
-**[Total Runs]($SUITE_URL):** $TOTAL_RUNS
-**Passed:** ✅ $PASSED/$TOTAL_RUNS
-**Failed:** ❌ $FAILED/$TOTAL_RUNS
-
+##
+**Total Runs**
+##
+**Passed ✅ :** $PASSED/$TOTAL_RUNS 
 $(if [ "$PASSED" -gt 0 ]; then
   echo "**✅ Passed Runs:**"
   echo ""
   echo "$RUNS" | jq -r '.[] | select(.result == "passed") | "- [\(.branch)@\(.commit_sha[0:7])](\(.web_url))"'
   echo ""
 fi)
-
+##
+**Failed ❌:** $FAILED/$TOTAL_RUNS
 $(if [ "$FAILED" -gt 0 ]; then
   echo "**❌ Failed Runs:**"
   echo ""
   echo "$RUNS" | jq -r '.[] | select(.result == "failed") | "- [\(.branch)@\(.commit_sha[0:7])](\(.web_url))"'
   echo ""
 fi)
+
 EOF
 
