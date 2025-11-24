@@ -10,7 +10,9 @@ MAX_RETRIES=5
 RETRY_DELAY=60
 ATTEMPT=0
 
+# Let's wait 30m seconds for test to be uploaded
 echo "⏳ Waiting for test results to be uploaded..."
+sleep 30
 
 # Retry loop
 while [ $ATTEMPT -lt $MAX_RETRIES ]; do
@@ -75,17 +77,22 @@ EOF
   exit 0
 fi
 
-# Parse results
+# Parse results for all possible states
 PASSED=$(echo "$RUNS" | jq '[.[] | select(.result == "passed")] | length')
 FAILED=$(echo "$RUNS" | jq '[.[] | select(.result == "failed")] | length')
+PENDING=$(echo "$RUNS" | jq '[.[] | select(.state == "pending" or .state == "running")] | length')
+SKIPPED=$(echo "$RUNS" | jq '[.[] | select(.result == "skipped")] | length')
 
 # Create markdown annotation
 cat << EOF > test-summary.md
 ## 🧪 Test Results Summary
 
 **Build:** $BUILDKITE_BUILD_NUMBER
-**Passed:** ✅ $PASSED/$TOTAL_RUNS
-**Failed:** ❌ $FAILED/$TOTAL_RUNS
+**Total Runs:** $TOTAL_RUNS
+**Passed:** ✅ $PASSED
+**Failed:** ❌ $FAILED
+**Pending/Running:** ⏳ $PENDING
+**Skipped:** ⏭️ $SKIPPED
 
 EOF
 
@@ -100,6 +107,13 @@ fi
 if [ "$FAILED" -gt 0 ]; then
   echo "**❌ Failed Runs:**" >> test-summary.md
   echo "$RUNS" | jq -r '.[] | select(.result == "failed") | "- [\(.branch)@\(.commit_sha[0:7])](\(.web_url))"' >> test-summary.md
+  echo "" >> test-summary.md
+fi
+
+# Add pending/running runs if any
+if [ "$PENDING" -gt 0 ]; then
+  echo "**⏳ Pending/Running Runs:**" >> test-summary.md
+  echo "$RUNS" | jq -r '.[] | select(.state == "pending" or .state == "running") | "- [\(.branch)@\(.commit_sha[0:7])](\(.web_url)) - State: \(.state)"' >> test-summary.md
   echo "" >> test-summary.md
 fi
 
