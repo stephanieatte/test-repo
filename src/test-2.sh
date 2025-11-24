@@ -1,6 +1,10 @@
 #!/bin/bash
 set -euo pipefail
 
+# Delay before starting to allow tests to upload
+echo "⏳ Waiting 30 seconds for test results to be uploaded..."
+sleep 30 
+
 # Your org and suite slugs
 ORG_SLUG="atte-test-org-1"
 SUITE_SLUG="my-rspec-example-test-suite"
@@ -60,15 +64,24 @@ cat << EOF > test-summary.md
 ## 🧪 Test Results Summary
 
 **Build:** $BUILDKITE_BUILD_NUMBER
-**Total Test Runs:** $TOTAL_RUNS
-**Passed:** ✅ $PASSED
-**Failed:** ❌ $FAILED
+**Passed:** ✅ $PASSED/$TOTAL_RUNS
+**Failed:** ❌ $FAILED/$TOTAL_RUNS
 
-### Test Suite Links
 EOF
 
-# Add links to each run with detailed info
-echo "$RUNS" | jq -r '.[] | "- [\(.result | ascii_upcase)] [\(.branch)@\(.commit_sha[0:7])](\(.web_url)) - **State:** \(.state) | **Created:** \(.created_at)"' >> test-summary.md
+# Add passed runs if any
+if [ "$PASSED" -gt 0 ]; then
+  echo "**✅ Passed Runs:**" >> test-summary.md
+  echo "$RUNS" | jq -r '.[] | select(.result == "passed") | "- [\(.branch)@\(.commit_sha[0:7])](\(.web_url))"' >> test-summary.md
+  echo "" >> test-summary.md
+fi
+
+# Add failed runs if any
+if [ "$FAILED" -gt 0 ]; then
+  echo "**❌ Failed Runs:**" >> test-summary.md
+  echo "$RUNS" | jq -r '.[] | select(.result == "failed") | "- [\(.branch)@\(.commit_sha[0:7])](\(.web_url))"' >> test-summary.md
+  echo "" >> test-summary.md
+fi
 
 # Post annotation
 buildkite-agent annotate --context "test-summary" --style "info" < test-summary.md
