@@ -11,7 +11,7 @@ SUITE_SLUG="my-rspec-example-test-suite"
 
 # Waiting to Fetch Runs
 echo "⏳ Waiting 3 minutes to fetch Runs..."
-sleep 10
+sleep 180
 
 echo "Fetching test runs for build ${BUILDKITE_BUILD_ID}..."
 
