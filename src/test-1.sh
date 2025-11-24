@@ -68,7 +68,7 @@ cat << EOF > test-summary.md
 EOF
 
 # Add links to each run
-echo "$RUNS" | jq -r '.[] | "- [\(.result | ascii_upcase)] [\(.branch)@\(.commit_sha[0:7])](\(.web_url))"' >> test-summary.md
+echo "$RUNS" | jq -r '.[] | "-  [\(.branch)@\(.commit_sha[0:7])](\(.web_url))"' >> test-summary.md
 
 # Post annotation
 buildkite-agent annotate --context "test-summary" --style "info" < test-summary.md
