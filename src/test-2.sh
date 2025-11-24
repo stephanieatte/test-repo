@@ -11,7 +11,7 @@ SUITE_SLUG="my-rspec-example-test-suite"
 
 # Waiting to Fetch Runs
 echo "⏳ Waiting 3 minutes to fetch Runs..."
-sleep 180
+sleep 10
 
 echo "Fetching test runs for build ${BUILDKITE_BUILD_ID}..."
 
@@ -42,8 +42,8 @@ buildkite-agent annotate --context "test-summary" --style "info" << EOF
 ## 🧪 Test Results
 
 **Total Runs:** $TOTAL
-**Passed ✅:** $PASSED
-**Failed ❌:**  $FAILED
+- **Passed ✅:** $PASSED
+- **Failed ❌:**  $FAILED
 
 $(if [ "$PASSED" -gt 0 ]; then
   echo "**✅ Passed Runs:**"
