@@ -10,9 +10,7 @@ MAX_RETRIES=5
 RETRY_DELAY=60
 ATTEMPT=0
 
-# Wait for test to be Uploaded
 echo "⏳ Waiting for test results to be uploaded..."
-sleep 30
 
 # Retry loop
 while [ $ATTEMPT -lt $MAX_RETRIES ]; do
@@ -68,7 +66,7 @@ fi
 PASSED=$(echo "$RUNS" | jq '[.[] | select(.result == "passed")] | length')
 FAILED=$(echo "$RUNS" | jq '[.[] | select(.result == "failed")] | length')
 
-# Get the suite URL (we can construct it from org and suite slug)
+# Get the suite URL
 SUITE_URL="https://buildkite.com/organizations/${ORG_SLUG}/analytics/suites/${SUITE_SLUG}"
 
 echo "Counts - Passed: $PASSED, Failed: $FAILED, Total: $TOTAL_RUNS"
@@ -78,24 +76,46 @@ buildkite-agent annotate --context "test-summary" --style "info" << EOF
 ## 🧪 Test Results Summary
 
 **[Build #$BUILDKITE_BUILD_NUMBER]($BUILDKITE_BUILD_URL)**
-##
-**Total Runs**
-##
-**Passed ✅ :** $PASSED/$TOTAL_RUNS 
+
+**[Total Runs]($SUITE_URL)** $TOTAL_RUNS
+
+**Passed ✅** $PASSED/$TOTAL_RUNS
+
+**Failed ❌** $FAILED/$TOTAL_RUNS
+
 $(if [ "$PASSED" -gt 0 ]; then
-  echo "**✅ Passed Runs:**"
+  echo "**✅ [Passed Runs]($SUITE_URL)**"
   echo ""
   echo "$RUNS" | jq -r '.[] | select(.result == "passed") | "- [\(.branch)@\(.commit_sha[0:7])](\(.web_url))"'
   echo ""
 fi)
-##
-**Failed ❌:** $FAILED/$TOTAL_RUNS
+
 $(if [ "$FAILED" -gt 0 ]; then
-  echo "**❌ Failed Runs:**"
+  echo "**❌ [Failed Runs]($SUITE_URL)**"
   echo ""
   echo "$RUNS" | jq -r '.[] | select(.result == "failed") | "- [\(.branch)@\(.commit_sha[0:7])](\(.web_url))"'
   echo ""
 fi)
-
 EOF
+```
 
+**Changes:**
+- ✅ Removed the colons (`:`) after "Passed ✅" and "Failed ❌"
+- ✅ Removed the colon after "Total Runs"
+- ✅ Better spacing between lines
+
+Output will now look like:
+```
+## 🧪 Test Results Summary
+
+Build #24
+
+Total Runs 1
+
+Passed ✅ 1/1
+
+Failed ❌ 0/1
+
+✅ Passed Runs
+
+- main@f31e359
