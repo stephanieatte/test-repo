@@ -1,6 +1,10 @@
 #!/bin/bash
 set -euo pipefail
 
+# Delay before starting to allow tests to upload
+echo "⏳ Waiting 30 seconds for test results to be uploaded..."
+sleep 30 
+
 # Your org and suite slugs
 ORG_SLUG="atte-test-org-1"
 SUITE_SLUG="my-rspec-example-test-suite"
