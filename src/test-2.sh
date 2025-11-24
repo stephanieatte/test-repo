@@ -9,6 +9,10 @@ sleep 60
 ORG_SLUG="atte-test-org-1"
 SUITE_SLUG="my-rspec-example-test-suite"
 
+# Waiting to Fetch Runs
+echo "⏳ Waiting 3 minutes to fetch Runs..."
+sleep 180
+
 echo "Fetching test runs for build ${BUILDKITE_BUILD_ID}..."
 
 # Fetch runs
@@ -19,7 +23,7 @@ RUNS=$(curl -s -H "Authorization: Bearer ${BUILDKITE_API_TOKEN}" \
 echo "Raw API response:"
 echo "$RUNS"
 
-sleep 120
+
 
 # Count totals
 TOTAL=$(echo "$RUNS" | jq 'length')
