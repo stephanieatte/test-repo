@@ -19,6 +19,8 @@ RUNS=$(curl -s -H "Authorization: Bearer ${BUILDKITE_API_TOKEN}" \
 echo "Raw API response:"
 echo "$RUNS"
 
+sleep 120
+
 # Count totals
 TOTAL=$(echo "$RUNS" | jq 'length')
 PASSED=$(echo "$RUNS" | jq '[.[] | select(.result == "passed")] | length')
@@ -26,34 +28,28 @@ FAILED=$(echo "$RUNS" | jq '[.[] | select(.result == "failed")] | length')
 
 echo "Total: $TOTAL, Passed: $PASSED, Failed: $FAILED"
 
+# Get passed and failed links
+PASSED_LINKS=$(echo "$RUNS" | jq -r '.[] | select(.result == "passed") | "- [\(.branch)@\(.commit_sha[0:7])](\(.web_url))"')
+FAILED_LINKS=$(echo "$RUNS" | jq -r '.[] | select(.result == "failed") | "- [\(.branch)@\(.commit_sha[0:7])](\(.web_url))"')
+
+
 # Create annotation
 buildkite-agent annotate --context "test-summary" --style "info" << EOF
 ## 🧪 Test Results
 
 **Total Runs:** $TOTAL
-**Passed:** ✅ $PASSED
-**Failed:** ❌ $FAILED
+**Passed ✅:** $PASSED
+**Failed ❌:**  $FAILED
 
-**Links:**
-$(echo "$RUNS" | jq -r '.[] | "- [\(.branch)@\(.commit_sha[0:7])](\(.web_url))"')
+$(if [ "$PASSED" -gt 0 ]; then
+  echo "**✅ Passed Runs:**"
+  echo "$PASSED_LINKS"
+  echo ""
+fi)
+
+$(if [ "$FAILED" -gt 0 ]; then
+  echo "**❌ Failed Runs:**"
+  echo "$FAILED_LINKS"
+  echo ""
+fi)
 EOF
-```
-
-This simpler version:
-- ✅ Waits 60 seconds before starting
-- ✅ Fetches all runs
-- ✅ Counts total, passed, and failed
-- ✅ Shows debug output in logs
-- ✅ Lists all run links in one section
-
-The output will be:
-```
-🧪 Test Results
-
-Total Runs: 2
-Passed: ✅ 2
-Failed: ❌ 0
-
-Links:
-- main@f31e359
-- main@a1b2c3d
