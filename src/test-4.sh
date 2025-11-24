@@ -94,5 +94,4 @@ $(if [ "$FAILED" -gt 0 ]; then
   echo ""
 fi)
 EOF
-```
 
