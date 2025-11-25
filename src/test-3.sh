@@ -34,8 +34,8 @@ buildkite-agent annotate --context "test-summary" --style "info" << EOF
 ## 🧪 Test Results
 
 **Total Runs:** $TOTAL
-**Passed:** ✅ $PASSED
-**Failed:** ❌ $FAILED
+- **Passed  ✅ :**$PASSED/$TOTAL
+- **Failed ❌ :**  $FAILED/$TOTAL
 
 $(if [ "$PASSED" -gt 0 ]; then
   echo "### ✅ Passed Runs"
