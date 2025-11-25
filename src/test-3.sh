@@ -9,6 +9,9 @@ sleep 60
 ORG_SLUG="atte-test-org-1"
 SUITE_SLUG="my-rspec-example-test-suite"
 
+# Wait 1 minute before starting
+echo "⏳ Waiting 3 Minutes to fetch tests..."
+sleep 180
 echo "Fetching test runs for build ${BUILDKITE_BUILD_ID}..."
 
 # Fetch runs
